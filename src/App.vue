@@ -1,21 +1,18 @@
 <template>
   <div class="header">
     <nav>
-      <div class="website-title">
-        <router-link to="/">
-          <img src="@/assets/icon/home/title.png" />
-        </router-link>
+      <div>
+        <router-link to="/" class="website-title">首页</router-link>
       </div>
       <div class="nav-list">
-        <router-link to="/">{{ $t("homeNav.technology") }}</router-link>
-        <router-link to="/chart">{{ $t("homeNav.charts") }}</router-link>
-        <router-link to="/">{{ $t("homeNav.library") }}</router-link>
-        <router-link to="/contact">{{ $t("homeNav.contact") }}</router-link>
+        <router-link to="/">{{ $t("homeNav.visa") }}</router-link>
+        <router-link to="/chart">{{ $t("homeNav.consult") }}</router-link>
+        <router-link to="/activity">{{ $t("homeNav.activity") }}</router-link>
+        <router-link to="/">{{ $t("homeNav.about") }}</router-link>
       </div>
-      <div class="get-start">GET STARTED</div>
-      <router-link to="/contact" class="menu-botton">
-        <img src="@/assets/icon/home/menu-icon.png" />
-      </router-link>
+      <div>
+        <router-link to="/" class="get-start">SIGN IN</router-link>
+      </div>
     </nav>
   </div>
   <div class="container">
@@ -24,7 +21,7 @@
 
   <div class="footer">
     <hr />
-    <div class="copyright">© 2022 VON Foundation, all rights reserved</div>
+    <div class="copyright">© 2023 Noworry, all rights reserved</div>
     <div class="list-menu">
       <div>Cookie Notice</div>
       <div>Privacy Notice</div>
@@ -54,6 +51,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 #app {
   font-family: Segoe UI, Segoe UI Light;
   -webkit-font-smoothing: antialiased;
@@ -66,33 +64,45 @@ body {
   width: 100%;
   background-color: #ffffff;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
+
 @media screen and (min-width: 650px) {
   nav {
-    width: 100%;
+    width: 85vw;
     display: flex;
-    padding: 40px 50px;
+    padding: 40px 0;
+    margin: 0 auto;
     justify-content: space-between;
     align-items: center;
   }
 
-  nav .website-title {
+  nav div {
+    width: 33.33%;
     display: flex;
-    justify-content: center;
     align-items: center;
   }
 
-  nav .website-title img {
-    width: 175px;
+  nav div:nth-child(1) {
+    justify-content: flex-start;
   }
 
+  nav div:nth-child(2) {
+    justify-content: justify-content;
+  }
+
+  nav div:nth-child(3) {
+    justify-content: flex-end;
+  }
+
+  nav .website-title,
   nav .get-start {
     color: #ffffff;
     font-weight: 900;
     padding: 15px 30px;
     border-radius: 10px;
     background-color: #1a1b1f;
+    text-decoration: none;
   }
 
   nav .menu-botton {
@@ -105,6 +115,7 @@ body {
     justify-content: space-between;
     align-items: center;
   }
+
   nav .nav-list a {
     font-family: Microsoft YaHei;
     font-weight: 600;
@@ -114,6 +125,7 @@ body {
     line-height: 28px;
     text-decoration: none;
   }
+
   .container {
     width: 100%;
   }
@@ -126,6 +138,7 @@ body {
     padding-top: 1%;
     border-top: 1px solid #7a7a7a;
   }
+
   .footer .list-menu {
     display: flex;
     width: 50%;
@@ -134,6 +147,7 @@ body {
     font-weight: 400;
     font-size: 14px;
   }
+
   .footer .copyright {
     font-family: Montserrat;
     width: 50%;
@@ -142,6 +156,7 @@ body {
     font-size: 14px;
   }
 }
+
 @media screen and (max-width: 650px) {
   nav {
     width: 100%;
@@ -159,7 +174,6 @@ body {
     width: 175px;
   }
 
-  nav .get-start,
   nav .nav-list {
     display: none;
   }
@@ -167,6 +181,7 @@ body {
   nav .menu-botton {
     padding-right: 10px;
   }
+
   nav .menu-botton img {
     height: 20px;
     width: 20px;
@@ -182,6 +197,7 @@ body {
     border-top: 1px solid #7a7a7a;
     margin: 3%;
   }
+
   .footer .list-menu {
     display: flex;
     justify-content: space-around;
@@ -190,6 +206,7 @@ body {
     font-weight: 400;
     font-size: 6px;
   }
+
   .footer .copyright {
     padding-top: 3%;
     font-family: Montserrat;
