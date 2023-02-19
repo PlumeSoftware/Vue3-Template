@@ -26,8 +26,9 @@ npm install
 ```
 
 ### 开放环境热重载运行
+#### 项目更换为使用vite,命令存在更新
 ```
-npm run serve
+npm run dev
 ```
 
 ### 打包为生产环境项目
