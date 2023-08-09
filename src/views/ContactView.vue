@@ -9,21 +9,11 @@
         <label>EMAIL ADDRESS</label>
         <input required type="email" v-model="email.email" />
         <label>MESSAGE</label>
-        <textarea
-          required
-          v-model="email.content"
-          placeholder="Any message which you want to say..."
-        ></textarea>
-        <input
-          v-bind:style="{
-            visibility:
-              email.name && email.email && email.content ? 'visible' : 'hidden',
-          }"
-          class="submit"
-          value="SUBMIT"
-          type="submit"
-          @click="sendMail()"
-        />
+        <textarea required v-model="email.content" placeholder="Any message which you want to say..."></textarea>
+        <input v-bind:style="{
+          visibility:
+            email.name && email.email && email.content ? 'visible' : 'hidden',
+        }" class="submit" value="SUBMIT" type="submit" @click="sendMail()" />
       </div>
     </div>
     <div class="frame-right">
@@ -34,50 +24,42 @@
           <div><u>Mail</u></div>
         </div>
         <div class="contact-item">
-          <div>{{frontend.AdminInfo.email}}</div>
+          <div>{{ frontend.AdminInfo.email }}</div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import endpoint from "@/doc/endpoint";
 import frontend from "@/doc/frontend";
 import { EmailReq } from "@/entity/request/SendEmailReq";
 import axios from "axios";
-import { defineComponent, reactive } from "vue";
+import {reactive } from "vue";
 
-export default defineComponent({
-  setup() {
-    const email = reactive({
-      name: "",
-      email: "",
-      content: "",
-    });
-    const sendMail = () => {
-      axios({
-        url: `${endpoint.SEND_EMAIL_TO_HOST}`,
-        method: "POST",
-        data: new EmailReq(`${email.name} ${email.email}`, email.content),
-      })
-        .then(() => {
-          email.name = "";
-          email.email = "";
-          email.content = "";
-          alert("Mail sent successfully!");
-        })
-        .catch(() => {
-          alert("Mail sent failed!");
-        });
-    };
-    return {
-      frontend,
-      email,
-      sendMail,
-    };
-  },
+const email = reactive({
+  name: "",
+  email: "",
+  content: "",
 });
+const sendMail = () => {
+  axios({
+    url: `${endpoint.SEND_EMAIL_TO_HOST}`,
+    method: "POST",
+    data: new EmailReq(`${email.name} ${email.email}`, email.content),
+  })
+    .then(() => {
+      email.name = "";
+      email.email = "";
+      email.content = "";
+      alert("Mail sent successfully!");
+    })
+    .catch(() => {
+      alert("Mail sent failed!");
+    });
+};
+
 </script>
 
 <style>
@@ -87,6 +69,7 @@ export default defineComponent({
     display: flex;
     margin: 0 auto;
   }
+
   .contact .frame-left {
     width: 80%;
     margin: 0 50px;
@@ -104,6 +87,7 @@ export default defineComponent({
     font-weight: 600;
     text-align: left;
   }
+
   .contact .frame-left .describe {
     font-family: Montserrat;
     letter-spacing: 1px;
@@ -119,6 +103,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
   }
+
   .contact .frame-left .form label {
     text-align: left;
     font-family: Montserrat;
@@ -126,6 +111,7 @@ export default defineComponent({
     font-size: 17px;
     margin-top: 20px;
   }
+
   .contact .frame-left .form input,
   .contact .frame-left .form textarea {
     font-family: Microsoft YaHei;
@@ -149,14 +135,17 @@ export default defineComponent({
     width: 32%;
     height: 44px;
   }
+
   .contact .frame-left .form input:focus {
     width: 92%;
   }
+
   .contact .frame-left .form textarea {
     width: 92%;
     height: 44px;
     padding-top: 2.5%;
   }
+
   .contact .frame-left .form textarea:focus {
     height: 144px;
   }
@@ -207,6 +196,7 @@ export default defineComponent({
     flex-direction: column;
     margin: 0 auto;
   }
+
   .contact .frame-left {
     width: 90%;
     border: 1px solid #eeeeee;
@@ -223,6 +213,7 @@ export default defineComponent({
     font-weight: 700;
     text-align: left;
   }
+
   .contact .frame-left .describe {
     font-family: Montserrat;
     letter-spacing: 1px;
@@ -239,6 +230,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
   }
+
   .contact .frame-left .form label {
     text-align: left;
     font-family: Montserrat;
@@ -246,6 +238,7 @@ export default defineComponent({
     font-size: 12px;
     margin-top: 20px;
   }
+
   .contact .frame-left .form input,
   .contact .frame-left .form textarea {
     font-family: Microsoft YaHei;
@@ -263,11 +256,13 @@ export default defineComponent({
     font-weight: 400;
     height: 30px;
   }
+
   .contact .frame-left .form textarea {
     line-height: 20px;
     height: 44px;
     padding-top: 1%;
   }
+
   .contact .frame-left .form textarea:focus {
     height: 144px;
   }
@@ -313,5 +308,4 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
   }
-}
-</style>
+}</style>

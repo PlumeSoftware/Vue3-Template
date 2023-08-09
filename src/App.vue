@@ -26,22 +26,13 @@
       <div>Cookie Notice</div>
       <div>Privacy Notice</div>
       <div>Contact</div>
-      <div>Careers</div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { i18n } from "./local";
+<script setup lang="ts">
 import * as config from "@/doc/frontend";
-import { defineComponent } from "vue";
 
-const { t } = i18n.global;
-export default defineComponent({
-  setup() {
-    return { config };
-  },
-});
 </script>
 
 <style>
